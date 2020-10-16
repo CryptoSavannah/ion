@@ -66,11 +66,11 @@ If you wish to run a node that writes ION DID operations, you will need to enabl
 
 ## 2. Setting up Multichain
 
-An ION node needs a trusted Bitcoin peer for fetching and writing ION transactions. We use Bitcoin Core for this.
+An ION node needs a trusted Blockchain peer for fetching and writing ION transactions. We use Multichain for this.
 
 ### Automated script for installing Multichain on Linux
 
-If you would like to install and start Bitcoin Core automatically on Linux, you can review and run the automated script committed in the [Sidetree repo](https://github.com/cryptosavannah/sidetree/blob/master/lib/multichain/setup.sh).
+If you would like to install and start Multichain automatically on Linux, you can review and run the automated script committed in the [Sidetree repo](https://github.com/cryptosavannah/sidetree/blob/master/lib/multichain/setup.sh).
 
 
 ### Installing Multichain Manually
@@ -103,18 +103,18 @@ Download and install MongoDB from https://www.mongodb.com/download-center/commun
 
 ## 5. Configure & Build ION Microservices
 
-Clone https://github.com/decentralized-identity/ion:
+Clone https://github.com/CryptoSavannah/ion:
 ```
-git clone https://github.com/decentralized-identity/ion
+git clone https://github.com/CryptoSavannah/ion
 ```
 
-Update the configuration for the ION Bitcoin microservice under `json/testnet-bitcoin-config.json`:
+Update the configuration for the ION Multichain microservice under `json/testnet-multichain-config.json`:
 
-  - `bitcoinPeerUri`
-    - Ensure it points to the RPC endpoint of the Bitcoin Core client you setup earlier in this guide (e.g. `http://localhost:18332` for testnet and `http://localhost:8332` for mainnet with default Bitcoin Core configuration).
-  - `bitcoinDataDirectory`
+  - `multichainPeerUri`
+    - Ensure it points to the RPC endpoint of the Multichain client you setup earlier in this guide (e.g. `http://localhost:<port>`).
+  - `multichainDataDirectory`
     - It needs to point to the block files folder:
-      - mainnet: exactly the same as the `datadir` value configured for Bitcoin Core.
+      - mainnet: exactly the same as the `datadir` value configured for Multichain.
       - testnet: `<datadir>/testnet3`.
   - `bitcoinWalletImportString`
     - Populated it with your private key if you intend to write DID operations, else just use any generated import string without any bitcoin.
