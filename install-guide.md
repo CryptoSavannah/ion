@@ -1,6 +1,6 @@
 # ION Installation Guide
 
-ION is a decentralized Layer 2 network for Decentralized Identifiers that runs atop the Bitcoin blockchain. Running an ION node minimizes trust in external parties for resolving ION DIDs, helps make the network more resilient and reliable, and provides the operator with better DID resolution performance.
+ION is a decentralized Layer 2 network for Decentralized Identifiers that runs atop Multichain. Running an ION node minimizes trust in external parties for resolving ION DIDs, helps make the network more resilient and reliable, and provides the operator with better DID resolution performance.
 
 The ION node reference implementation is currently in beta phase, operators should expect potential breaking changes and resets of the network's state. Presently, we are only recommending that experienced developers invest the time in running, testing, and contributing to the code base. This recommendation will change as the implementation progresses into more stable stages of development, which contributors will communicate to the community via blog posts and communications from DIF and collaborating organizations.
 
@@ -64,46 +64,18 @@ Go go https://nodejs.org, download and install the latest v12 of Node.js.
 
 If you wish to run a node that writes ION DID operations, you will need to enable uPnP on your router or open ports `4002` and `4003` so that the operation data files can be served to others via IPFS.
 
-## 2. Setting up Bitcoin Core
+## 2. Setting up Multichain
 
 An ION node needs a trusted Bitcoin peer for fetching and writing ION transactions. We use Bitcoin Core for this.
 
-### Automated script for installing Bitcoin Core on Linux
+### Automated script for installing Multichain on Linux
 
-If you would like to install and start Bitcoin Core automatically on Linux, you can review and run the automated script committed in the [Sidetree repo](https://github.com/decentralized-identity/sidetree/blob/master/lib/bitcoin/setup.sh).
+If you would like to install and start Bitcoin Core automatically on Linux, you can review and run the automated script committed in the [Sidetree repo](https://github.com/cryptosavannah/sidetree/blob/master/lib/multichain/setup.sh).
 
-> NOTE: Initial synchronization takes ~2 hours for testnet on a 2 core machine with an SSD.
 
-### Installing Bitcoin Core Manually
+### Installing Multichain Manually
 
-You can find Windows and Linux binaries for Bitcoin Core releases [here.](https://bitcoincore.org/en/releases/)
-
-#### On Linux:
-
-Create a configuration file (`bitcoin.conf`) designating the path you would like the Bitcoin data to be stored in (`[datadir]`):
-```yaml
-testnet=1
-server=1
-datadir=~/.bitcoin
-rpcuser=<your-rpc-username>
-rpcpassword=<your-rpc-password>
-txindex=1
-```
-
-Start Bitcoin Core and let it sync with Testnet:
-
-```
-./bin/bitcoind --config bitcoin.conf
-```
-> You can add `--daemon` to run bitcoind as a daemon process.
-
-#### On Windows:
-
-Running Bitcoin Core with friendly UI after install:
-
-```
-bitcoin-qt.exe -testnet -datadir=<path-to-store-data> -server -rpcuser=<you-rpc-username> -rpcpassword=<your-rpc-password> -txindex=1
-```
+You can find Windows and Linux binaries for Multichain releases [here.](https://www.multichain.com/download-install/)
 
 
 ## 3. Installing Go-IPFS
